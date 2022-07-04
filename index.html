@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors Game</title>
+</head>
+<body>
+    <script>
+        let hand = ("Rock", "Paper", "Scissors");
+
+        function computerPlay(length) {
+            let result = " ";
+            const handLength = hand.length;
+
+            for (let i = 0; i < length; i++) {
+                result += hand.charAt(Math.floor(Math.random() * handLength))
+            }
+            
+            return result;
+            
+            
+        }
+
+        console.log(computerPlay(5));
+        
+    </script>
+</body>
+</html>
