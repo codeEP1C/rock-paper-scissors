@@ -6,23 +6,55 @@
 </head>
 <body>
     <script>
-        let hand = ("Rock", "Paper", "Scissors");
-
+        const playerSelection = prompt("Choose Rock, Paper or Scissors");
+        let hand = ["Rock", "Paper", "Scissors"];
+        let showHand = "";
+        let score = 0;
+    
+        // Function where player chooses Rock Paper or Scissors        
         function computerPlay(length) {
-            let result = " ";
-            const handLength = hand.length;
-
-            for (let i = 0; i < length; i++) {
-                result += hand.charAt(Math.floor(Math.random() * handLength))
-            }
-            
-            return result;
-            
-            
+            showHand = hand[Math.floor(Math.random()* 3)];
+            return showHand;
         }
-
-        console.log(computerPlay(5));
+        // Call computerPlay function
+        console.log(computerPlay());
         
+        computerSelection = showHand;
+        // Function where computer chooses a Rock Paper or Scissors
+        function playRound(computerSelection, playerSelection) {
+            if (computerSelection == playerSelection) {
+                return "Its a tie!";
+            } else if (computerSelection == "Rock" && playerSelection == "Scissors" || 
+                       computerSelection == "Scissors" && playerSelection == "Paper" ||
+                       computerSelection == "Paper" && playerSelection == "Rock") { 
+                       score = score + 1;
+                       return "You win!"; 
+                       
+            } else if (computerSelection == "Scissors" && playerSelection == "Rock" ||
+                       computerSelection == "Paper" && playerSelection == "Scissors" ||
+                       computerSelection == "Rock" && playerSelection == "Paper") {
+                       return "You lose!"; 
+            } else {
+                return "Choose a hand!";
+            }
+        }
+        // Call playRound function
+        console.log(playRound(playerSelection, computerSelection));
+
+        // Function to count points and who wins and loses
+        function game(playRound) {
+            for (let points = 0; points < 5; points++) {
+                if (points === 5) { 
+                    return "You won against AI!";
+                } else if (points < 5 && points > 0) {
+                    return "Keep going!";
+                } else {
+                    console.log(score);
+                }
+            }
+        }
+        console.log(game(playRound));
+
     </script>
 </body>
 </html>
